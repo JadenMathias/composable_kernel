@@ -42,7 +42,7 @@ __launch_bounds__(GridwiseGemm::MaxBlockSize, MinimumOccupancy)
     // __attribute__((amdgpu_waves_per_eu(1, 1)))
     kernel_gemm_xdl_cshuffle_v3_mx_bpreshuffle(typename GridwiseGemm::Argument karg)
 {
-#if defined(__gfx950__) || defined(__gfx125__)
+#if defined(__gfx950__)
     if constexpr(GridwiseGemm::template IsValidCompilationParameter<CGlobalMemoryDataOperation>())
     {
         // Pass two lds pointer is the key to tell compiler that ds_read/write
